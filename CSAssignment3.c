@@ -11,18 +11,21 @@ void main()
 {
 	int n;
 
-	/*printf("Enter a number to represent as binary:");
-	scanf("%d", &n);
-	decimal_to_binary(n);*/
-
-	/*printf("Enter a number to count how many 1's in binary:");
+	printf("Enter a number to represent as binary:");
 	scanf_s("%d", &n);
-	printf("%d",number_of_bin_ones(n));*/
+	decimal_to_binary(n);
 
-	/*printf("Enter a number to calculate the difference:");
+	printf("\nEnter a number to count how many 1's in binary:");
 	scanf_s("%d", &n);
-	printf("%d", diff(n));*/
+	printf("%d",number_of_bin_ones(n));
 
+	printf("\nEnter a number to calculate the difference:");
+	scanf_s("%d", &n);
+	printf("%d", diff(n));
+	
+	printf("\nEnter number for the size of the series (n):");
+	scanf_s("%d", &n);
+	bigger_rev(n);
 
 }
 
@@ -53,6 +56,7 @@ int number_of_bin_ones(int num)
 		temp = number_of_bin_ones(num / 2);
 		return (temp + (num % 2));
 	}
+	//I didn't need ChatGPT for this.
 }
 
 int diff(int num)
@@ -81,10 +85,27 @@ int diff(int num)
 			return (temp - (num % 10));  
 		}
 	}
+	//I didn't need ChatGPT for this.
 }
 
 int bigger_rev(int n)
 {
-	int biggestNumber;
 
+	int currentNum;
+	int biggestNum;
+	if (n < 1)
+	{
+		return 0;
+	}
+	scanf_s("%d", &currentNum);
+	biggestNum = bigger_rev(n - 1);
+
+	if (currentNum > biggestNum)
+	{
+		biggestNum = currentNum;
+		printf("[%d]\n", currentNum);	
+	}
+	return biggestNum;
+	//ChatGPT was largely useless for this question, it kept trying to change the code
+	//based on a wrong interpretation of the question asked. 
 }
